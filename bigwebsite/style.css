@@ -1,36 +1,21 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #111;
     color: #f5f5f5;
-    background-color: black;
 }
 
-/* MASSIVE MAP WITH COOL BACKGROUND */
+/* GIANT MAP */
 #zoo-map {
-    width: 3200px;
-    height: 3200px;
+    width: 3000px;
+    height: 3000px;
     position: relative;
-    background:
-        radial-gradient(circle at center, #1a1a1a 0%, #000 70%),
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,0.03),
-            rgba(255,255,255,0.03) 1px,
-            transparent 1px,
-            transparent 40px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            rgba(255,255,255,0.03),
-            rgba(255,255,255,0.03) 1px,
-            transparent 1px,
-            transparent 40px
-        );
+    background-color: #1a1a1a;
 }
 
 /* TITLE */
 .title {
-    font-size: 60px;
+    font-size: 50px;
     text-align: center;
     text-decoration: underline;
     font-weight: bold;
@@ -38,119 +23,53 @@ body {
     color: crimson;
 }
 
-/* ROOMS */
-.room {
-    width: 420px;
-    height: 420px;
-    border: 3px solid #444;
-    padding: 20px;
-    position: absolute;
-    background-color: #1b1b1b;
-    opacity: 0.95;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-}
-
-.room img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-/* ROOM POSITIONS */
-.burger-fountain { top: 300px; left: 300px; }
-.waiting-room { top: 2500px; left: 200px; }
-.gift-shop { top: 1600px; left: 2400px; }
-
-/* CRYPTIDS */
-.cryptid {
+/* COMMON BOX STYLE */
+.room, .cryptid, #control-room {
     width: 350px;
-    height: 420px;
-    border: 3px dashed crimson;
+    height: 400px;
+    border: 3px solid #444;
     padding: 15px;
+    background-color: #222;
     position: absolute;
-    background-color: #161616;
-    font-style: italic;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.95;
 }
 
-.cryptid img {
+/* IMAGES */
+.room img, .cryptid img {
     width: 100%;
-    height: 280px;
+    height: 250px;
     object-fit: cover;
 }
 
-.cryptid:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px crimson;
-}
+/* ROOM POSITIONS (NO OVERLAP) */
+.burger-fountain { top: 200px; left: 200px; }
+.waiting-room { top: 200px; left: 900px; }
+.gift-shop { top: 200px; left: 1600px; }
 
-/* SPREAD OUT */
-.bigfoot { top: 800px; left: 600px; }
-.mothman { top: 2000px; left: 1000px; }
-.nessie { top: 2800px; left: 1500px; }
-.chupacabra { top: 1200px; left: 2600px; }
-.jersey-devil { top: 400px; left: 2100px; }
-.flatwoods { top: 2300px; left: 2700px; }
+/* CRYPTID POSITIONS (SPACED CLEANLY) */
+.bigfoot { top: 900px; left: 300px; }
+.mothman { top: 900px; left: 1000px; }
+.nessie { top: 900px; left: 1700px; }
+
+.chupacabra { top: 1700px; left: 300px; }
+.jersey-devil { top: 1700px; left: 1000px; }
+.flatwoods { top: 1700px; left: 1700px; }
 
 /* CONTROL ROOM */
 #control-room {
-    position: absolute;
-    top: 2900px;
-    left: 2900px;
-    width: 400px;
-    height: 420px;
-    border: 4px solid yellow;
-    padding: 20px;
+    top: 2500px;
+    left: 2500px;
     background-color: black;
-    opacity: 0.9;
-    text-align: center;
-    box-shadow: 0 0 30px yellow;
+    border: 3px solid yellow;
+    color: yellow;
 }
 
-#control-room img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-/* SECRET TEXT */
+/* SECRET */
 .secret {
     position: absolute;
-    font-size: 14px;
-    opacity: 0.15;
-}
-
-.s1 { top: 100px; left: 2900px; }
-.s2 { top: 3100px; left: 100px; }
-.s3 { top: 1700px; left: 150px; }
-.s4 { top: 600px; left: 2800px; }
-.s5 { top: 1400px; left: 2000px; }
-.s6 { top: 2600px; left: 1200px; }
-.s7 { top: 500px; left: 500px; }
-.s8 { top: 2200px; left: 500px; }
-.s9 { top: 1000px; left: 1500px; }
-.s10 { top: 3000px; left: 3100px; }
-
-/* DVD BOUNCING LOGO */
-#dvd {
-    position: absolute;
-    width: 150px;
-    height: 60px;
-    background-color: crimson;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    line-height: 60px;
-    border-radius: 8px;
-    animation: bounce 12s infinite linear alternate;
-}
-
-@keyframes bounce {
-    0%   { top: 0px; left: 0px; }
-    25%  { top: 2800px; left: 400px; }
-    50%  { top: 200px; left: 3000px; }
-    75%  { top: 3000px; left: 1500px; }
-    100% { top: 1500px; left: 0px; }
+    top: 2900px;
+    left: 100px;
+    font-size: 12px;
+    opacity: 0.3;
 }
