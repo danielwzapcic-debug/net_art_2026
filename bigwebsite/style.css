@@ -1,0 +1,132 @@
+/* GENERAL PAGE SETTINGS */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #f0f0f0;
+}
+
+/* GIANT SCROLLABLE MAP */
+
+#zoo-map {
+    width: 3000px;
+    height: 3000px;
+    position: relative;
+    background-color: #111111;
+}
+
+/* TITLE */
+
+.title {
+    font-size: 60px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    padding: 30px;
+    color: crimson;
+}
+
+/* ROOM STYLING */
+
+.room {
+    width: 400px;
+    height: 400px;
+    border: 4px solid #444;
+    margin: 40px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    opacity: 0.95;
+    position: absolute;
+}
+
+/* CRYPTID STYLING */
+
+.cryptid {
+    width: 350px;
+    height: 450px;
+    border: 3px dashed red;
+    padding: 15px;
+    font-style: italic;
+    position: absolute;
+    background-color: #1a1a1a;
+}
+
+/* IMAGE STYLING */
+
+.room img,
+.cryptid img,
+#control-room img {
+    width: 100%;
+    height: 220px;
+    border: 2px solid #333;
+}
+
+/* SPECIFIC LOCATIONS */
+
+.waiting-room {
+    top: 200px;
+    left: 200px;
+    background-color: #003333;
+}
+
+.soda-fountain {
+    top: 200px;
+    left: 900px;
+    background-color: #330000;
+}
+
+.bigfoot {
+    top: 900px;
+    left: 300px;
+    background-color: #2b1b0f;
+}
+
+.mothman {
+    top: 1300px;
+    left: 1400px;
+    background-color: #1a0022;
+}
+
+.nessie {
+    top: 2200px;
+    left: 800px;
+    background-color: #002244;
+}
+
+/* CONTROL ROOM (ID requirement) */
+
+#control-room {
+    position: absolute;
+    top: 2500px;
+    left: 2500px;
+    width: 400px;
+    height: 450px;
+    border: 4px solid yellow;
+    padding: 20px;
+    background-color: black;
+    opacity: 0.85;
+}
+
+/* SPAN STYLING */
+
+.mystery {
+    color: lime;
+    font-weight: bold;
+}
+
+.escaped {
+    color: red;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+/* HIDDEN SECRET */
+
+.tiny-secret {
+    position: absolute;
+    top: 50px;
+    left: 2800px;
+    font-size: 12px;
+    opacity: 0.4;
+}
