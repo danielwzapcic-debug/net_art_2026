@@ -2,306 +2,238 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Echoes of History</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="scroll-hint">↕ ↔ Scroll to explore</div>
+  <div id="hint">↕ ↔ scroll to explore</div>
 
   <div id="canvas">
 
-    <!-- BOUNCING SCREENSAVER -->
+    <h1 id="page-title">Echoes of History</h1>
+    <p id="subtitle">— scroll. explore. discover. —</p>
+
+    <!-- bouncing screensaver -->
     <div id="screensaver-container">
       <div id="bouncing-box">ECHOES<br>OF HISTORY</div>
     </div>
 
-    <!-- TITLE -->
-    <h1 id="page-title">Echoes of History</h1>
-    <p id="subtitle">— scroll. explore. discover. —</p>
-
-    <!-- GHOST YEAR STAMPS -->
-    <div class="year-stamp" style="top:680px; left:55px;">1776</div>
-    <div class="year-stamp" style="top:1280px; left:1340px;">1865</div>
-    <div class="year-stamp" style="top:2000px; left:2450px;">1987</div>
-    <div class="year-stamp" style="top:1700px; left:460px;">1963</div>
-
-
-    <!-- ─────────────────────────────────
-         TOP-LEFT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:720px; left:60px; transform:rotate(-2.5deg);">
-      <div class="tape" style="top:-12px; left:38%;"></div>
+    <!-- top left -->
+    <div class="card" style="top:720px; left:60px; transform:rotate(-2deg);">
       "Give me liberty, or give me death!"
-      <div class="attribution">— Patrick Henry, 1775</div>
+      <div class="by">— Patrick Henry, 1775</div>
     </div>
 
-    <div class="quote-ghost" style="top:970px; left:75px; transform:rotate(7deg);">
+    <div class="ghost" style="top:960px; left:80px; transform:rotate(6deg);">
       "Knowledge is power."
-      <div style="font-family:'Courier Prime',monospace; font-size:11px; color:#9e8e76;
-                  font-style:normal; margin-top:6px;">— Francis Bacon</div>
+      <div style="font-size:11px; color:#aaa; margin-top:5px;">— Francis Bacon</div>
     </div>
 
-    <div class="secret" style="top:860px; left:330px;">
+    <div class="secret" style="top:855px; left:330px;">
       Secret #1: Cleopatra lived closer in time to the Moon landing than to the Great Pyramid.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         TOP-CENTER
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:710px; left:740px; transform:rotate(1.2deg);">
+    <!-- top center -->
+    <div class="card" style="top:700px; left:740px; transform:rotate(1deg);">
       "The only thing we have to fear is fear itself."
-      <div class="attribution">— FDR, 1933</div>
+      <div class="by">— FDR, 1933</div>
     </div>
 
-    <div class="quote-big" style="top:790px; left:1060px; transform:rotate(-0.5deg);">
+    <div class="big" style="top:780px; left:1060px;">
       "Injustice anywhere is a threat to justice everywhere."
-      <span class="attr">— Martin Luther King Jr., 1963</span>
+      <small>— Martin Luther King Jr., 1963</small>
     </div>
 
-    <div class="secret" style="top:1010px; left:1170px;">
+    <div class="secret" style="top:1000px; left:1150px;">
       Secret #2: The printing press changed the world more than the internet.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         TOP-RIGHT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:710px; left:1660px; transform:rotate(3.5deg);">
-      <div class="tape" style="top:-12px; right:18px; transform:rotate(-4deg);"></div>
+    <!-- top right -->
+    <div class="card" style="top:700px; left:1680px; transform:rotate(3deg);">
       "Float like a butterfly, sting like a bee."
-      <div class="attribution">— Muhammad Ali</div>
+      <div class="by">— Muhammad Ali</div>
     </div>
 
-    <div class="quote-big" style="top:860px; left:1980px; width:480px; font-size:36px; transform:rotate(-1.5deg);">
+    <div class="big" style="top:850px; left:1980px; font-size:34px; width:460px; transform:rotate(-1.5deg);">
       "That's one small step for man, one giant leap for mankind."
-      <span class="attr">— Neil Armstrong, 1969</span>
+      <small>— Neil Armstrong, 1969</small>
     </div>
 
-    <div class="quote-ghost" style="top:730px; left:2360px; width:210px; transform:rotate(-6deg);">
+    <div class="ghost" style="top:730px; left:2380px; width:200px; transform:rotate(-5deg);">
       "We choose to go to the Moon."
     </div>
 
-    <div class="secret" style="top:1040px; left:1690px;">
+    <div class="secret" style="top:1020px; left:1700px;">
       Secret #3: Oxford University is older than the Aztec Empire.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         FAR TOP-RIGHT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:760px; left:2700px; transform:rotate(-7deg); width:270px;">
+    <!-- far top right -->
+    <div class="card" style="top:770px; left:2680px; transform:rotate(-6deg); width:250px;">
       "The price of freedom is eternal vigilance."
-      <div class="attribution">— Thomas Jefferson</div>
+      <div class="by">— Thomas Jefferson</div>
     </div>
 
-    <div class="secret" style="top:900px; left:2840px;">
+    <div class="secret" style="top:890px; left:2830px;">
       Secret #4: Woolly mammoths were still alive when the Great Pyramid was built.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         MID-LEFT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:1140px; left:70px; transform:rotate(-3deg);">
-      <div class="tape" style="top:-12px; left:28%;"></div>
+    <!-- mid left -->
+    <div class="card" style="top:1140px; left:70px; transform:rotate(-2.5deg);">
       "The secret of getting ahead is getting started."
-      <div class="attribution">— Mark Twain</div>
+      <div class="by">— Mark Twain</div>
     </div>
 
-    <div class="quote-big" style="top:1360px; left:55px; font-size:38px; color:#8b3a1a; transform:rotate(1deg); width:530px;">
+    <div class="big" style="top:1370px; left:55px; font-size:36px; color:#8b3a1a; width:510px; transform:rotate(1deg);">
       "We shall fight on the beaches... we shall never surrender."
-      <span class="attr">— Winston Churchill, 1940</span>
+      <small>— Winston Churchill, 1940</small>
     </div>
 
-    <!-- REQUIRED: div with ID -->
-    <div id="notebook-section">
+    <!-- required div with ID -->
+    <div id="notebook">
       <h3>Notes to Self</h3>
-      <p>Look in the corners.<br>
-         History is ongoing.<br>
-         <span class="highlight">You are history</span> too.<br>
-         Keep scrolling →</p>
+      <p>
+        Look in the corners.<br>
+        History is still happening.<br>
+        <span class="hl">You are history</span> too.<br>
+        Keep scrolling →
+      </p>
     </div>
 
-    <div class="secret" style="top:1270px; left:410px;">
-      Secret #5: You are made of atoms billions of years old.
+    <div class="secret" style="top:1260px; left:400px;">
+      Secret #5: You are made of atoms that are billions of years old.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         MID-CENTER
-         ───────────────────────────────── -->
-
-    <!-- JFK big quote -->
-    <div class="quote-big" style="top:1090px; left:770px; font-size:48px; transform:rotate(-0.8deg);">
-      "Ask not what your country can do for you —
-       ask what you can do for your country."
-      <span class="attr">— John F. Kennedy, 1961</span>
+    <!-- mid center — JFK + image -->
+    <div class="big" style="top:1090px; left:760px; font-size:46px;">
+      "Ask not what your country can do for you — ask what you can do for your country."
+      <small>— John F. Kennedy, 1961</small>
     </div>
 
-    <!-- REQUIRED: image -->
-    <figure id="featured-image">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg"
-        alt="An ant that has outlasted every empire"
-      />
+    <!-- required image -->
+    <figure id="photo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg"
+           alt="An ant that has outlasted every empire" />
       <figcaption>An ant — whose ancestors watched every empire rise and fall.</figcaption>
     </figure>
 
-    <!-- REQUIRED: paragraph with span tags -->
-    <p style="position:absolute; top:1195px; left:1470px; width:410px;
-              font-family:'Playfair Display',serif; font-size:18px;
-              line-height:1.75; color:#1a1408; transform:rotate(-1.5deg);">
-      History is a record of <span class="highlight">human choices</span>
-      made under impossible pressure, of
-      <span class="crimson">courage and cowardice</span> in equal measure,
-      and the <span class="whisper">quiet moments no one recorded</span>.
+    <!-- required paragraph with spans -->
+    <p style="position:absolute; top:1200px; left:1470px; width:400px;
+              font-family:'Playfair Display',serif; font-size:18px; line-height:1.75; color:#222;">
+      History is a record of <span class="hl">human choices</span> made under pressure,
+      of <span class="red">courage and cowardice</span> in equal measure,
+      and of the <span class="faint">quiet moments nobody recorded</span>.
     </p>
 
     <div class="secret" style="top:1640px; left:1040px;">
       Secret #6: Shakespeare invented over 1,700 words we still use today.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         MID-RIGHT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:1110px; left:1760px; transform:rotate(-5deg);">
-      <div class="tape" style="top:-12px; left:44%;"></div>
+    <!-- mid right — Sankara + others -->
+    <div class="card" style="top:1110px; left:1760px; transform:rotate(-4deg);">
       "Power tends to corrupt, and absolute power corrupts absolutely."
-      <div class="attribution">— Lord Acton, 1887</div>
+      <div class="by">— Lord Acton, 1887</div>
     </div>
 
-    <!-- THOMAS SANKARA QUOTE -->
-    <div class="quote-big" style="top:1310px; left:1980px; font-size:36px; color:#8b3a1a; transform:rotate(2deg); width:580px;">
+    <div class="big" style="top:1310px; left:1970px; font-size:34px; color:#8b3a1a; width:560px; transform:rotate(2deg);">
       "You cannot carry out fundamental change without a certain amount of madness."
-      <span class="attr">— Thomas Sankara, 1985</span>
+      <small>— Thomas Sankara, 1985</small>
     </div>
 
-    <div class="quote-card" style="top:1530px; left:1820px; transform:rotate(2deg);">
+    <div class="card" style="top:1530px; left:1820px; transform:rotate(1.5deg);">
       "Darkness cannot drive out darkness; only light can do that."
-      <div class="attribution">— MLK Jr.</div>
+      <div class="by">— MLK Jr.</div>
     </div>
 
     <div class="secret" style="top:1680px; left:1950px;">
       Secret #7: The fax machine was invented before the telephone.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         FAR MID-RIGHT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:1140px; left:2680px; transform:rotate(-8deg); width:270px;">
+    <!-- far mid right -->
+    <div class="card" style="top:1140px; left:2670px; transform:rotate(-7deg); width:260px;">
       "To be yourself in a world constantly trying to make you something else is the greatest accomplishment."
-      <div class="attribution">— Ralph Waldo Emerson</div>
+      <div class="by">— Ralph Waldo Emerson</div>
     </div>
 
-    <div class="quote-ghost" style="top:1440px; left:2810px; width:230px; transform:rotate(5deg); font-size:16px;">
-      "Do not go where the path may lead; go instead where there is no path and leave a trail."
+    <div class="ghost" style="top:1440px; left:2800px; width:220px; transform:rotate(4deg); font-size:15px;">
+      "Do not go where the path may lead — go where there is no path and leave a trail."
     </div>
 
-
-    <!-- ─────────────────────────────────
-         LOWER-LEFT
-         ───────────────────────────────── -->
-
-    <div class="quote-big" style="top:1830px; left:55px; font-size:42px; transform:rotate(1.5deg);">
+    <!-- lower left -->
+    <div class="big" style="top:1840px; left:55px; font-size:40px; transform:rotate(1deg);">
       "We are all made of star-stuff."
-      <span class="attr">— Carl Sagan</span>
+      <small>— Carl Sagan</small>
     </div>
 
-    <div class="quote-card" style="top:2050px; left:90px; transform:rotate(-2deg);">
-      <div class="tape" style="top:-12px; left:32%; transform:rotate(2deg);"></div>
+    <div class="card" style="top:2060px; left:90px; transform:rotate(-2deg);">
       "The unexamined life is not worth living."
-      <div class="attribution">— Socrates, ~399 BC</div>
+      <div class="by">— Socrates, ~399 BC</div>
     </div>
 
-    <div class="secret" style="top:1960px; left:480px;">
+    <div class="secret" style="top:1960px; left:470px;">
       Secret #8: France was still using the guillotine when Star Wars came out.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         LOWER-CENTER
-         ───────────────────────────────── -->
-
-    <div class="quote-big" style="top:1750px; left:860px; font-size:44px; transform:rotate(-1deg);">
+    <!-- lower center -->
+    <div class="big" style="top:1760px; left:850px; font-size:42px; transform:rotate(-1deg);">
       "The arc of the moral universe is long, but it bends toward justice."
-      <span class="attr">— Theodore Parker / MLK Jr.</span>
+      <small>— Theodore Parker / MLK Jr.</small>
     </div>
 
-    <div class="quote-card" style="top:2020px; left:980px; transform:rotate(4deg);">
+    <div class="card" style="top:2020px; left:970px; transform:rotate(3.5deg);">
       "In the middle of difficulty lies opportunity."
-      <div class="attribution">— Albert Einstein</div>
+      <div class="by">— Albert Einstein</div>
     </div>
 
-    <div class="secret" style="top:2100px; left:1440px;">
+    <div class="secret" style="top:2100px; left:1430px;">
       Secret #9: Nintendo was founded in 1889 as a playing card company.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         LOWER-RIGHT
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:1770px; left:1880px; transform:rotate(-4.5deg);">
+    <!-- lower right -->
+    <div class="card" style="top:1780px; left:1870px; transform:rotate(-4deg);">
       "To live is to choose. But to choose well, you must know who you are."
-      <div class="attribution">— Jean-Paul Sartre</div>
+      <div class="by">— Jean-Paul Sartre</div>
     </div>
 
-    <div class="quote-big" style="top:1980px; left:1950px; font-size:34px; transform:rotate(2deg);">
+    <div class="big" style="top:1990px; left:1940px; font-size:32px; transform:rotate(2deg);">
       "It always seems impossible until it's done."
-      <span class="attr">— Nelson Mandela</span>
+      <small>— Nelson Mandela</small>
     </div>
 
-    <div class="secret" style="top:2120px; left:2500px;">
+    <div class="secret" style="top:2110px; left:2490px;">
       Secret #10: The T-Rex lived closer to us than to the Stegosaurus.
     </div>
 
-
-    <!-- ─────────────────────────────────
-         BOTTOM ROW
-         ───────────────────────────────── -->
-
-    <div class="quote-card" style="top:2340px; left:75px; transform:rotate(-1.5deg);">
+    <!-- bottom row -->
+    <div class="card" style="top:2330px; left:70px; transform:rotate(-1.5deg);">
       "The world is a book, and those who do not travel read only one page."
-      <div class="attribution">— Saint Augustine</div>
+      <div class="by">— Saint Augustine</div>
     </div>
 
-    <div class="quote-big" style="top:2370px; left:900px; font-size:40px; text-align:center; opacity:0.5; transform:rotate(-0.5deg);">
+    <div class="big" style="top:2360px; left:880px; font-size:38px; opacity:0.5; text-align:center;">
       "The present moment always will have been."
-      <span class="attr">— Anonymous</span>
+      <small>— Anonymous</small>
     </div>
 
-    <div class="quote-card" style="top:2380px; left:2100px; transform:rotate(-3deg);">
-      <div class="tape" style="top:-12px; left:34%; transform:rotate(2deg);"></div>
+    <div class="card" style="top:2350px; left:2100px; transform:rotate(-2.5deg);">
       "Be the change you wish to see in the world."
-      <div class="attribution">— Mahatma Gandhi</div>
+      <div class="by">— Mahatma Gandhi</div>
     </div>
 
-    <div class="secret" style="top:2550px; left:300px;">
-      Secret #11: You found them all. You are a true explorer.
+    <div class="secret" style="top:2540px; left:290px;">
+      Secret #11: You found them all. True explorer.
     </div>
 
-    <!-- REQUIRED: ID corner element -->
-    <div id="corner-secret">
-      ✦ You made it to the edge. ✦<br>
-      <span class="whisper">Not many do.</span><br><br>
+    <!-- required ID corner element -->
+    <div id="corner">
+      ✦ you made it to the edge ✦<br>
+      <span class="faint">not many do</span><br><br>
       "A people without positive history<br>
       is like an individual without memory."<br>
       — Thomas Sankara
     </div>
 
-  </div><!-- end #canvas -->
+  </div>
 
 </body>
 </html>
