@@ -189,8 +189,8 @@ body {
 /* ---- IMAGE FRAME ---- */
 #featured-image {
   position: absolute;
-  top: 920px;
-  left: 180px;
+  top: 1390px;
+  left: 820px;
   border: 6px solid #c9a84c;
   padding: 8px;
   background-color: #fff9ef;
@@ -329,10 +329,10 @@ span.whisper {
 /* ---- NOTEBOOK LINES DIV ---- */
 #notebook-section {
   position: absolute;
-  top: 1500px;
-  left: 900px;
-  width: 500px;
-  height: 300px;
+  top: 1620px;
+  left: 80px;
+  width: 460px;
+  height: 260px;
   border: 2px solid #c9a84c;
   padding: 20px 30px;
   background: repeating-linear-gradient(
