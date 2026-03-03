@@ -1,0 +1,66 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full screen */
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+/* Base tile style */
+.tile {
+    opacity: 0.85;
+}
+
+/* 5 unique tile types */
+.tile-red {
+    background-color: #e63946;
+}
+
+.tile-blue {
+    background-color: #1d3557;
+}
+
+.tile-yellow {
+    background-color: #ffbe0b;
+}
+
+.tile-green {
+    background-color: #2a9d8f;
+}
+
+.tile-purple {
+    background-color: #8338ec;
+}
+
+/* Ape feature in center */
+.ape-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+.ape-container img {
+    max-width: 300px;
+    height: auto;
+}
