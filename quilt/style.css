@@ -5,7 +5,7 @@
     opacity: 0.9;
 }
 
-/* Hot pink */
+
 .m1 {
     top: 5%;
     left: 10%;
@@ -13,7 +13,7 @@
     filter: invert(1) sepia(1) saturate(5) hue-rotate(300deg) contrast(1.2);
 }
 
-/* Electric blue */
+
 .m2 {
     top: 40%;
     left: 65%;
@@ -21,7 +21,7 @@
     filter: invert(1) sepia(1) saturate(6) hue-rotate(200deg) contrast(1.3);
 }
 
-/* Neon green */
+
 .m3 {
     top: 70%;
     left: 15%;
@@ -29,7 +29,7 @@
     filter: invert(1) sepia(1) saturate(6) hue-rotate(90deg) contrast(1.2);
 }
 
-/* Orange burst */
+
 .m4 {
     top: 20%;
     left: 75%;
@@ -37,7 +37,6 @@
     filter: invert(1) sepia(1) saturate(6) hue-rotate(20deg) contrast(1.2);
 }
 
-/* Purple shock */
 .m5 {
     top: 55%;
     left: 30%;
@@ -45,7 +44,7 @@
     filter: invert(1) sepia(1) saturate(6) hue-rotate(260deg) contrast(1.2);
 }
 
-/* Teal fade */
+
 .m6 {
     top: 10%;
     left: 45%;
@@ -53,7 +52,7 @@
     filter: invert(1) sepia(1) saturate(6) hue-rotate(160deg) contrast(1.3);
 }
 
-/* Yellow pop */
+
 .m7 {
     top: 75%;
     left: 70%;
