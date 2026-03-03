@@ -1,66 +1,89 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Full screen */
 body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background: black;
 }
 
-/* Grid layout */
-.grid-container {
+/* GRID */
+.grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     height: 100vh;
     width: 100vw;
-    position: relative;
 }
 
-/* Base tile style */
 .tile {
     opacity: 0.85;
 }
 
-/* 5 unique tile types */
-.tile-red {
-    background-color: #e63946;
-}
+/* 5 UNIQUE TILE STYLES */
+.t1 { background: #ff006e; }
+.t2 { background: #3a86ff; }
+.t3 { background: #ffbe0b; }
+.t4 { background: #8338ec; }
+.t5 { background: #06d6a0; }
 
-.tile-blue {
-    background-color: #1d3557;
-}
-
-.tile-yellow {
-    background-color: #ffbe0b;
-}
-
-.tile-green {
-    background-color: #2a9d8f;
-}
-
-.tile-purple {
-    background-color: #8338ec;
-}
-
-/* Ape feature in center */
-.ape-container {
+/* MONKEY BASE */
+.monkey {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    width: 300px;
+    mix-blend-mode: screen;
 }
 
-.ape-container img {
-    max-width: 300px;
-    height: auto;
+/* DIFFERENT ROTATIONS + COLOR SHIFTS */
+.m1 {
+    top: 5%;
+    left: 10%;
+    transform: rotate(15deg);
+    filter: hue-rotate(0deg) saturate(2);
+}
+
+.m2 {
+    top: 40%;
+    left: 60%;
+    transform: rotate(-25deg);
+    filter: hue-rotate(90deg) saturate(3);
+}
+
+.m3 {
+    top: 70%;
+    left: 15%;
+    transform: rotate(45deg);
+    filter: hue-rotate(180deg) saturate(2);
+}
+
+.m4 {
+    top: 20%;
+    left: 75%;
+    transform: rotate(-60deg);
+    filter: hue-rotate(250deg) saturate(4);
+}
+
+.m5 {
+    top: 55%;
+    left: 30%;
+    transform: rotate(90deg);
+    filter: hue-rotate(320deg) saturate(2);
+}
+
+.m6 {
+    top: 10%;
+    left: 45%;
+    transform: rotate(-110deg);
+    filter: hue-rotate(140deg) saturate(3);
+}
+
+.m7 {
+    top: 75%;
+    left: 70%;
+    transform: rotate(30deg);
+    filter: hue-rotate(200deg) saturate(3);
 }
