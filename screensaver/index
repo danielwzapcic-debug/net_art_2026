@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ape</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    
+    body {
+      animation: bgCycle 10s infinite steps(1);
+    }
+
+    @keyframes bgCycle {
+      0%   { background-color: #e74c3c; } 
+      20%  { background-color: #3498db; }
+      40%  { background-color: #2ecc71; } 
+      60%  { background-color: #f39c12; } 
+      80%  { background-color: #9b59b6; } 
+      100% { background-color: #e74c3c; }
+    }
+
+    .ape {
+      position: fixed;
+      width: 160px;
+      animation: apeMove 10s infinite steps(1);
+    }
+
+    .ape img {
+      width: 100%;
+    }
+
+    @keyframes apeMove {
+      0%   { top: 10%;  left: 10%;  
+      20%  { top: 10%;  left: 70%;  } 
+      40%  { top: 70%;  left: 70%;  } 
+      60%  { top: 70%;  left: 10%;  } 
+      80%  { top: 38%;  left: 40%;  } 
+      100% { top: 10%;  left: 10%;  }
+    }
+
+    body:hover {
+      animation-duration: 2.5s;
+    }
+
+    body:hover .ape {
+      animation-duration: 2.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="ape">
+    <img src="APE.png" alt="ape" />
+  </div>
+</body>
+</html>
