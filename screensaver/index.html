@@ -2,151 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🦍</title>
+  <title>ape</title>
   <style>
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
 
-    body {
-      animation: bgSnap 16s infinite steps(1);
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
     }
 
-    @keyframes bgSnap {
-      0%    { background: #ff003c; }
-      12.5% { background: #00ff41; }
-      25%   { background: #0d0d0d; }
-      37.5% { background: #ffe600; }
-      50%   { background: #ff6af8; }
-      62.5% { background: #00e5ff; }
-      75%   { background: #ff4500; }
-      87.5% { background: #ffffff; }
-      100%  { background: #ff003c; }
-    }
 
-    /* ── CENTER APE ── */
-    .center {
+    .system {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 220px;
+    }
+
+
+    .king {
+      position: absolute;
+      width: 200px;
       transform: translate(-50%, -50%);
-      z-index: 10;
+      z-index: 20;
+      filter:
+        drop-shadow(0 0 12px #ff0000)
+        drop-shadow(0 0 30px #cc0000)
+        drop-shadow(0 0 60px #880000);
     }
 
-    .center img {
-      width: 100%;
-      filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-    }
-
-    /* ── ORBIT SYSTEM ── */
-    /* Each orbit is a div centered on screen that rotates.
-       The ape img inside is offset to the edge of the orbit radius,
-       then counter-rotated so it stays upright. */
+    .king img { width: 100%; display: block; }
 
     .orbit {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      z-index: 5;
+      position: absolute;
+      top: 0; left: 0;
+      transform-origin: 0 0;
     }
 
     .orbit img {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      display: block;
     }
 
-    .orbit-1 {
-      width: 340px;
-      height: 340px;
-      margin-top: -170px;
-      margin-left: -170px;
-      animation: spin 6s infinite linear;
-    }
-    .orbit-1 img {
-      width: 70px;
-      left: -35px;
-      filter: drop-shadow(3px 3px 0 #000);
-      animation: antispin 6s infinite linear;
+    /* orbit 1 — closest */
+    .o1 { animation: spin 7s linear infinite; }
+    .o1 img {
+      width: 65px;
+      top: -32px;
+      left: -170px;
+      filter: hue-rotate(0deg) saturate(10) brightness(1.5) drop-shadow(0 0 8px #ff4400);
+      animation: unspin 7s linear infinite;
     }
 
-    .orbit-2 {
-      width: 460px;
-      height: 460px;
-      margin-top: -230px;
-      margin-left: -230px;
-      animation: spin 10s infinite linear reverse;
-    }
-    .orbit-2 img {
+
+    .o2 { animation: spin 11s linear infinite reverse; }
+    .o2 img {
       width: 55px;
-      left: -27px;
-      filter: invert(1) drop-shadow(3px 3px 0 #ff003c);
-      animation: antispin 10s infinite linear reverse;
+      top: -27px;
+      left: -220px;
+      filter: hue-rotate(90deg) saturate(10) brightness(1.5) drop-shadow(0 0 8px #00ff88);
+      animation: unspin 11s linear infinite reverse;
     }
 
-    .orbit-3 {
-      width: 580px;
-      height: 580px;
-      margin-top: -290px;
-      margin-left: -290px;
-      animation: spin 14s infinite linear;
+
+    .o3 { animation: spin 15s linear infinite; }
+    .o3 img {
+      width: 50px;
+      top: -25px;
+      left: -270px;
+      filter: hue-rotate(180deg) saturate(10) brightness(1.5) drop-shadow(0 0 8px #00aaff);
+      animation: unspin 15s linear infinite;
     }
-    .orbit-3 img {
+
+
+    .o4 { animation: spin 20s linear infinite reverse; }
+    .o4 img {
       width: 45px;
-      left: -22px;
-      filter: drop-shadow(-3px 3px 0 #ffe600);
-      animation: antispin 14s infinite linear;
-    }
-
-    .orbit-4 {
-      width: 700px;
-      height: 700px;
-      margin-top: -350px;
-      margin-left: -350px;
-      animation: spin 9s infinite linear reverse;
-    }
-    .orbit-4 img {
-      width: 40px;
-      left: -20px;
-      filter: invert(1) drop-shadow(3px 0 0 #00e5ff);
-      animation: antispin 9s infinite linear reverse;
+      top: -22px;
+      left: -320px;
+      filter: hue-rotate(270deg) saturate(10) brightness(1.5) drop-shadow(0 0 8px #ff00ff);
+      animation: unspin 20s linear infinite reverse;
     }
 
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
-    /* counter-rotate so ape stays upright */
-    @keyframes antispin {
-      from { transform: translateY(-50%) rotate(0deg); }
-      to   { transform: translateY(-50%) rotate(-360deg); }
+    @keyframes unspin {
+      to { transform: rotate(-360deg); }
     }
 
-    /* ── HOVER speeds up orbits ── */
-    body:hover .orbit-1 { animation-duration: 1.5s; }
-    body:hover .orbit-2 { animation-duration: 2.5s; }
-    body:hover .orbit-3 { animation-duration: 3.5s; }
-    body:hover .orbit-4 { animation-duration: 2s;   }
+ 
+    .system:hover .o1 { animation-duration: 1.5s; }
+    .system:hover .o2 { animation-duration: 2.5s; }
+    .system:hover .o3 { animation-duration: 3.5s; }
+    .system:hover .o4 { animation-duration: 5s;   }
 
-    body:hover .orbit-1 img { animation-duration: 1.5s; }
-    body:hover .orbit-2 img { animation-duration: 2.5s; }
-    body:hover .orbit-3 img { animation-duration: 3.5s; }
-    body:hover .orbit-4 img { animation-duration: 2s;   }
+    .system:hover .o1 img { animation-duration: 1.5s; }
+    .system:hover .o2 img { animation-duration: 2.5s; }
+    .system:hover .o3 img { animation-duration: 3.5s; }
+    .system:hover .o4 img { animation-duration: 5s;   }
 
-    body:hover { animation-duration: 4s; }
   </style>
 </head>
 <body>
 
-  <!-- orbiting apes -->
-  <div class="orbit orbit-1"><img src="APE.png" alt="" /></div>
-  <div class="orbit orbit-2"><img src="APE.png" alt="" /></div>
-  <div class="orbit orbit-3"><img src="APE.png" alt="" /></div>
-  <div class="orbit orbit-4"><img src="APE.png" alt="" /></div>
+  <div class="system">
 
-  <!-- big center ape -->
-  <div class="center"><img src="APE.png" alt="" /></div>
+    <div class="orbit o1"><img src="APE.png" /></div>
+    <div class="orbit o2"><img src="APE.png" /></div>
+    <div class="orbit o3"><img src="APE.png" /></div>
+    <div class="orbit o4"><img src="APE.png" /></div>
+
+    <div class="king"><img src="APE.png" /></div>
+
+  </div>
 
 </body>
 </html>
