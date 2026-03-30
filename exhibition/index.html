@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shared Spaces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #111;
+      color: #bbb;
+      font-family: 'Special Elite', cursive;
+      overflow-x: hidden;
+    }
+
+    #hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem;
+    }
+
+    #hero h1 {
+      font-size: clamp(4rem, 18vw, 13rem);
+      line-height: .9;
+      color: #ddd;
+      font-weight: normal;
+      letter-spacing: .02em;
+    }
+
+    #hero h1 em {
+      color: #b03020;
+      font-style: normal;
+    }
+
+    #hero .curator {
+      margin-top: 1.2rem;
+      font-size: .78rem;
+      color: #383838;
+      letter-spacing: .06em;
+    }
+
+    #statement {
+      padding: 5rem 3rem;
+      background: #161610;
+      border-top: 1px solid #1e1e14;
+    }
+
+    #statement p {
+      font-size: .88rem;
+      line-height: 2;
+      color: #6a6a50;
+      max-width: 700px;
+    }
+
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+      position: relative;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .pair.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pair::after {
+      content: '';
+      position: absolute;
+      inset: 0 calc(50% - 50px) 0 calc(50% - 50px);
+      background: linear-gradient(to right,
+        transparent,
+        rgba(120, 30, 15, .08) 40%,
+        rgba(15, 35, 55, .08) 60%,
+        transparent
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .half {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .half-l { background: #0f0c0b; }
+    .half-r { background: #0b0e12; border-left: 1px solid #181e28; }
+
+    .half img {
+      width: 100%;
+      height: calc(100% - 56px);
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter .7s ease;
+    }
+
+    .half img:hover {
+      filter: grayscale(0%);
+    }
+
+    .half iframe {
+      width: 100%;
+      height: calc(100% - 56px);
+      border: none;
+      display: block;
+      background: #000;
+    }
+
+    .lbl {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.4rem;
+      border-top: 1px solid rgba(255,255,255,.04);
+    }
+
+    .half-l .lbl { background: #120d0c; }
+    .half-r .lbl { background: #090d12; }
+
+    .lbl-type {
+      font-size: .6rem;
+      letter-spacing: .07em;
+      margin-bottom: .18rem;
+      color: #3a3a3a;
+    }
+
+    .half-l .lbl-type { color: #6a2015; }
+    .half-r .lbl-type { color: #1a4560; }
+
+    .lbl-title {
+      font-size: .8rem;
+      color: #aaa;
+    }
+
+    .lbl a {
+      font-size: .7rem;
+      color: #2e2e2e;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .lbl a:hover { color: #888; }
+
+    .conn {
+      padding: 1.8rem 3rem;
+      background: #0d0b16;
+      border-top: 1px solid #131020;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .8s ease .1s, transform .8s ease .1s;
+    }
+
+    .conn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .conn p {
+      font-size: .8rem;
+      line-height: 2;
+      color: #38324e;
+      max-width: 780px;
+    }
+
+    .conn p strong {
+      color: #5a3e88;
+      font-weight: normal;
+    }
+
+    footer {
+      padding: 2.5rem 3rem;
+      background: #0d0d0d;
+      border-top: 1px solid #161616;
+      font-size: .68rem;
+      letter-spacing: .05em;
+      color: #1e1e1e;
+    }
+
+    @media (max-width: 660px) {
+      .pair {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .pair::after { display: none; }
+      .half { height: 55vh; }
+      .half-r { border-left: none; border-top: 1px solid #181e28; }
+      .conn, #statement { padding: 1.4rem 1.5rem; }
+      #hero { padding: 2rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<section id="hero">
+  <h1>Shared<br><em>Spaces</em></h1>
+  <p class="curator">Curated by Daniel Zapcic &nbsp;&middot;&nbsp; 2026</p>
+</section>
+
+<section id="statement">
+  <p>Banksy transformed art not through design or technique but by deconstructing what we thought art was in the first place. So much of his work hinged on the location and the experience of the work itself adding to the content. His graffiti style, although not novel, was starting to take over on a larger scale with provocative imagery as the artist pushed the boundaries of what art was previously. Net art and its rise also follows a similar trajectory, and by comparing the works of Banksy and various popular net artworks it is clear how in a way they fill the same need in society and even do so by employing similar techniques. These pieces all tell a story, not just in the standalone work but by the larger cultural impact which they carried and the motifs that they share, linking them within the larger zeitgeist. Overall Banksy is an innovative artist who was massively bolstered by the internet and the globalism of art which arose in part due to the net art movement.</p>
+</section>
+
+<div class="pair">
+  <div class="half half-l">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Banksy_Girl_and_Heart_Balloon.jpg/800px-Banksy_Girl_and_Heart_Balloon.jpg" alt="Girl with Balloon"/>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Banksy</div>
+        <div class="lbl-title">Girl with Balloon, 2002</div>
+      </div>
+      <a href="https://www.banksy.co.uk" target="_blank">↗</a>
+    </div>
+  </div>
+  <div class="half half-r">
+    <iframe src="http://myboyfriendcamebackfromthewar.net" title="Olia Lialina" loading="lazy" sandbox="allow-scripts allow-same-origin allow-top-navigation"></iframe>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Olia Lialina &nbsp;&middot;&nbsp; 1996</div>
+        <div class="lbl-title">My Boyfriend Came Back from the War</div>
+      </div>
+      <a href="http://myboyfriendcamebackfromthewar.net" target="_blank">↗</a>
+    </div>
+  </div>
+</div>
+<div class="conn">
+  <p><strong>Fragmentation as language.</strong> Reaching for a drifting balloon or watching through a splintered window, both make you feel loss and desperation.</p>
+</div>
+
+<div class="pair">
+  <div class="half half-l">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Banksy_Flower_Thrower.jpg/800px-Banksy_Flower_Thrower.jpg" alt="Rage, the Flower Thrower"/>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Banksy</div>
+        <div class="lbl-title">Rage, The Flower Thrower, 2003</div>
+      </div>
+      <a href="https://www.banksy.co.uk" target="_blank">↗</a>
+    </div>
+  </div>
+  <div class="half half-r">
+    <iframe src="http://wwwwwwwww.jodi.org" title="JODI" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">JODI &nbsp;&middot;&nbsp; 1995</div>
+        <div class="lbl-title">wwwwwwwww.jodi.org</div>
+      </div>
+      <a href="http://wwwwwwwww.jodi.org" target="_blank">↗</a>
+    </div>
+  </div>
+</div>
+<div class="conn">
+  <p><strong>Weaponized familiarity.</strong> A man throwing flowers and a website throwing error messages &mdash; unexpected ammunition from familiar faces.</p>
+</div>
+
+<div class="pair">
+  <div class="half half-l">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Banksy_Napalm_%28Can%27t_Beat_That_Feeling%29.jpg/800px-Banksy_Napalm_%28Can%27t_Beat_That_Feeling%29.jpg" alt="Napalm"/>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Banksy</div>
+        <div class="lbl-title">Napalm (Can't Beat That Feeling), 2004</div>
+      </div>
+      <a href="https://www.tate.org.uk/art/artworks/banksy-napalm-l04168" target="_blank">↗</a>
+    </div>
+  </div>
+  <div class="half half-r">
+    <iframe src="https://anthology.rhizome.org/toywar" title="The TOYWAR" loading="lazy" sandbox="allow-scripts allow-same-origin allow-top-navigation"></iframe>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">etoy &nbsp;&middot;&nbsp; 1999</div>
+        <div class="lbl-title">The TOYWAR</div>
+      </div>
+      <a href="https://anthology.rhizome.org/toywar" target="_blank">↗</a>
+    </div>
+  </div>
+</div>
+<div class="conn">
+  <p><strong>Corporate sabotage meets corporate iconography.</strong> Mickey Mouse violating Geneva? A toy corporation's stock plummeting? The fix is simple &mdash; tear it all down.</p>
+</div>
+
+<div class="pair">
+  <div class="half half-l">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Exit_Through_the_Gift_Shop_poster.jpg/800px-Exit_Through_the_Gift_Shop_poster.jpg" alt="Exit Through the Gift Shop"/>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Banksy</div>
+        <div class="lbl-title">Exit Through the Gift Shop, 2010</div>
+      </div>
+      <a href="https://www.imdb.com/title/tt1587707/" target="_blank">↗</a>
+    </div>
+  </div>
+  <div class="half half-r">
+    <iframe src="https://anthology.rhizome.org/jennifer-in-paradise" title="Jennifer in Paradise" loading="lazy" sandbox="allow-scripts allow-same-origin allow-top-navigation"></iframe>
+    <div class="lbl">
+      <div>
+        <div class="lbl-type">Constant Dullaart &nbsp;&middot;&nbsp; 2014</div>
+        <div class="lbl-title">Jennifer in Paradise</div>
+      </div>
+      <a href="https://anthology.rhizome.org/jennifer-in-paradise" target="_blank">↗</a>
+    </div>
+  </div>
+</div>
+<div class="conn">
+  <p><strong>The art world is a con?</strong> Decide for yourself &mdash; but whether through film or a stock image, these works peel the curtain back just enough for us to go blind.</p>
+</div>
+
+<footer>Shared Spaces &nbsp;&middot;&nbsp; Curated by Daniel Zapcic &nbsp;&middot;&nbsp; 2026</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.pair, .conn').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
