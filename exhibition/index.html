@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +7,8 @@
   <title>Shared Spaces</title>
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: #111;
@@ -39,10 +33,7 @@
       letter-spacing: .02em;
     }
 
-    #hero h1 em {
-      color: #b03020;
-      font-style: normal;
-    }
+    #hero h1 em { color: #b03020; font-style: normal; }
 
     #hero .curator {
       margin-top: 1.2rem;
@@ -64,6 +55,7 @@
       max-width: 700px;
     }
 
+    /* pair layout */
     .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -74,10 +66,7 @@
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    .pair.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .pair.visible { opacity: 1; transform: translateY(0); }
 
     .pair::after {
       content: '';
@@ -85,35 +74,69 @@
       inset: 0 calc(50% - 50px) 0 calc(50% - 50px);
       background: linear-gradient(to right,
         transparent,
-        rgba(120, 30, 15, .08) 40%,
-        rgba(15, 35, 55, .08) 60%,
+        rgba(120,30,15,.08) 40%,
+        rgba(15,35,55,.08) 60%,
         transparent
       );
       pointer-events: none;
       z-index: 2;
     }
 
-    .half {
-      position: relative;
-      overflow: hidden;
-    }
-
+    .half { position: relative; overflow: hidden; }
     .half-l { background: #0f0c0b; }
     .half-r { background: #0b0e12; border-left: 1px solid #181e28; }
 
-    .half img {
+    /* image wrapper with fallback */
+    .img-wrap {
       width: 100%;
       height: calc(100% - 56px);
+      position: relative;
+      background: #0a0a0a;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
       filter: grayscale(20%);
       transition: filter .7s ease;
     }
 
-    .half img:hover {
-      filter: grayscale(0%);
+    .img-wrap img:hover { filter: grayscale(0%); }
+
+    .img-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
     }
 
+    .img-fallback svg {
+      width: 50%;
+      max-width: 240px;
+      opacity: .15;
+    }
+
+    .img-fallback a {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+
+    .img-fallback a:hover { color: #888; }
+
+    /* label */
     .lbl {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -123,6 +146,7 @@
       justify-content: space-between;
       padding: 0 1.4rem;
       border-top: 1px solid rgba(255,255,255,.04);
+      z-index: 3;
     }
 
     .half-l .lbl { background: #120d0c; }
@@ -137,10 +161,7 @@
     .half-l .lbl-type { color: #6a2015; }
     .half-r .lbl-type { color: #1a4560; }
 
-    .lbl-title {
-      font-size: .8rem;
-      color: #aaa;
-    }
+    .lbl-title { font-size: .8rem; color: #aaa; }
 
     .lbl a {
       font-size: .7rem;
@@ -151,6 +172,7 @@
 
     .lbl a:hover { color: #888; }
 
+    /* connection */
     .conn {
       padding: 1.8rem 3rem;
       background: #0d0b16;
@@ -160,10 +182,7 @@
       transition: opacity .8s ease .1s, transform .8s ease .1s;
     }
 
-    .conn.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .conn.visible { opacity: 1; transform: translateY(0); }
 
     .conn p {
       font-size: .8rem;
@@ -172,10 +191,7 @@
       max-width: 780px;
     }
 
-    .conn p strong {
-      color: #5a3e88;
-      font-weight: normal;
-    }
+    .conn p strong { color: #5a3e88; font-weight: normal; }
 
     footer {
       padding: 2.5rem 3rem;
@@ -187,10 +203,7 @@
     }
 
     @media (max-width: 660px) {
-      .pair {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
+      .pair { grid-template-columns: 1fr; height: auto; }
       .pair::after { display: none; }
       .half { height: 55vh; }
       .half-r { border-left: none; border-top: 1px solid #181e28; }
@@ -208,12 +221,22 @@
 </section>
 
 <section id="statement">
-  <p>Banksy transformed art not through design or technique but by deconstructing what we thought art was in the first place. So much of his work hinged on the location and the experience of the work itself adding to the content. His graffiti style, although not novel, was starting to take over on a larger scale with provocative imagery as the artist pushed the boundaries of what art was previously. Net art and its rise also follows a similar trajectory, and by comparing the works of Banksy and various popular net artworks it is clear how in a way they fill the same need in society and even do so by employing similar techniques. These pieces all tell a story, not just in the standalone work but by the larger cultural impact which they carried and the motifs that they share, linking them within the larger zeitgeist. Overall Banksy is an innovative artist who was massively bolstered by the internet and the globalism of art which arose in part due to the net art movement.</p>
+  <p>Banksy changed the art game not through design or technique but by deconstructing what we thought art was in the first place. His work hinged on location and encounter — a stencil on a West Bank wall means something a gallery print never could. Net art operates identically: Olia Lialina's fragmenting browser windows and JODI's deliberately broken interfaces use their medium as message, the same way Banksy uses the street. Both movements emerged in the 1990s outside institutional permission, both weaponize familiar symbols against themselves, and both depend on the audience stumbling into the work unexpectedly — on a wall, or in a browser. Banksy's global reach was itself accelerated by the internet, the same infrastructure net artists were busy dismantling. They were building and burning the same house.</p>
 </section>
 
+<!-- PAIR 1 -->
 <div class="pair">
   <div class="half half-l">
-    <img src="girl-balloon.jpg" alt="Girl with Balloon"/>
+    <div class="img-wrap">
+      <img src="girl-balloon.jpg" alt="Girl with Balloon" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Special Elite, cursive" font-size="7" fill="#c0392b" opacity=".6">Girl with Balloon</text>
+        </svg>
+        <a href="https://www.banksy.co.uk" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Banksy</div>
@@ -223,7 +246,17 @@
     </div>
   </div>
   <div class="half half-r">
-    <img src="lialina.gif" alt="My Boyfriend Came Back from the War"/>
+    <div class="img-wrap">
+      <img src="lialina.gif" alt="My Boyfriend Came Back from the War" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#1a4560" stroke-width="1.5"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Special Elite, cursive" font-size="5.5" fill="#1a4560" opacity=".6">My Boyfriend Came</text>
+          <text x="50" y="67" text-anchor="middle" font-family="Special Elite, cursive" font-size="5.5" fill="#1a4560" opacity=".6">Back from the War</text>
+        </svg>
+        <a href="http://myboyfriendcamebackfromthewar.net" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Olia Lialina &nbsp;&middot;&nbsp; 1996</div>
@@ -237,9 +270,20 @@
   <p><strong>Fragmentation as language.</strong> Reaching for a drifting balloon or watching through a splintered window, both make you feel loss and desperation.</p>
 </div>
 
+<!-- PAIR 2 -->
 <div class="pair">
   <div class="half half-l">
-    <img src="flower-thrower.jpg" alt="Rage, the Flower Thrower"/>
+    <div class="img-wrap">
+      <img src="flower-thrower.jpg" alt="Rage, the Flower Thrower" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Special Elite, cursive" font-size="5.5" fill="#c0392b" opacity=".6">Rage, The</text>
+          <text x="50" y="67" text-anchor="middle" font-family="Special Elite, cursive" font-size="5.5" fill="#c0392b" opacity=".6">Flower Thrower</text>
+        </svg>
+        <a href="https://www.banksy.co.uk" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Banksy</div>
@@ -249,7 +293,16 @@
     </div>
   </div>
   <div class="half half-r">
-    <img src="jodi.png" alt="wwwwwwwww.jodi.org"/>
+    <div class="img-wrap">
+      <img src="jodi.png" alt="wwwwwwwww.jodi.org" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#1a4560" stroke-width="1.5"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Special Elite, cursive" font-size="6" fill="#1a4560" opacity=".6">wwwwwwwww.jodi.org</text>
+        </svg>
+        <a href="http://wwwwwwwww.jodi.org" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">JODI &nbsp;&middot;&nbsp; 1995</div>
@@ -263,9 +316,20 @@
   <p><strong>Weaponized familiarity.</strong> A man throwing flowers and a website throwing error messages &mdash; unexpected ammunition from familiar faces.</p>
 </div>
 
+<!-- PAIR 3 -->
 <div class="pair">
   <div class="half half-l">
-    <img src="napalm.png" alt="Napalm"/>
+    <div class="img-wrap">
+      <img src="napalm.png" alt="Napalm" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Special Elite, cursive" font-size="5.5" fill="#c0392b" opacity=".6">Napalm</text>
+          <text x="50" y="67" text-anchor="middle" font-family="Special Elite, cursive" font-size="5" fill="#c0392b" opacity=".6">Can't Beat That Feeling</text>
+        </svg>
+        <a href="https://www.tate.org.uk/art/artworks/banksy-napalm-l04168" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Banksy</div>
@@ -275,7 +339,16 @@
     </div>
   </div>
   <div class="half half-r">
-    <img src="toywar.jpg" alt="The TOYWAR"/>
+    <div class="img-wrap">
+      <img src="toywar.jpg" alt="The TOYWAR" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#1a4560" stroke-width="1.5"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Special Elite, cursive" font-size="6" fill="#1a4560" opacity=".6">The TOYWAR</text>
+        </svg>
+        <a href="https://anthology.rhizome.org/toywar" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">etoy &nbsp;&middot;&nbsp; 1999</div>
@@ -289,9 +362,19 @@
   <p><strong>Corporate sabotage meets corporate iconography.</strong> Mickey Mouse violating Geneva? A toy corporation's stock plummeting? The fix is simple &mdash; tear it all down.</p>
 </div>
 
+<!-- PAIR 4 -->
 <div class="pair">
   <div class="half half-l">
-    <img src="dismaland.webp" alt="Dismaland"/>
+    <div class="img-wrap">
+      <img src="dismaland.webp" alt="Dismaland" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="50" y="62" text-anchor="middle" font-family="Special Elite, cursive" font-size="6" fill="#c0392b" opacity=".6">Dismaland</text>
+        </svg>
+        <a href="https://dismaland.co.uk" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Banksy</div>
@@ -301,7 +384,17 @@
     </div>
   </div>
   <div class="half half-r">
-    <img src="paradise.avif" alt="Jennifer in Paradise"/>
+    <div class="img-wrap">
+      <img src="paradise.avif" alt="Jennifer in Paradise" onerror="this.style.display='none'; this.parentNode.querySelector('.img-fallback').style.display='flex';"/>
+      <div class="img-fallback">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 95,92 5,92" fill="none" stroke="#1a4560" stroke-width="1.5"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Special Elite, cursive" font-size="6" fill="#1a4560" opacity=".6">Jennifer</text>
+          <text x="50" y="67" text-anchor="middle" font-family="Special Elite, cursive" font-size="6" fill="#1a4560" opacity=".6">in Paradise</text>
+        </svg>
+        <a href="https://anthology.rhizome.org/jennifer-in-paradise" target="_blank">view work ↗</a>
+      </div>
+    </div>
     <div class="lbl">
       <div>
         <div class="lbl-type">Constant Dullaart &nbsp;&middot;&nbsp; 2014</div>
