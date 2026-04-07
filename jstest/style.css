@@ -18,7 +18,7 @@ body {
     top: 50px;
     width: 100px;
     height: auto;
-    transition: left 0.5s, top 0.5s;
+    transition: left 0.5s, top 0.5s, transform 0.5s;
 }
 
 button {
