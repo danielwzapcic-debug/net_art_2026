@@ -6,13 +6,13 @@ body {
     transition: background-color 0.5s;
 }
 
-#monkey-container {
+#ape-container {
     position: relative;
     height: 300px;
     margin-bottom: 20px;
 }
 
-#monkey {
+#ape {
     position: absolute;
     left: 0;
     top: 50px;
