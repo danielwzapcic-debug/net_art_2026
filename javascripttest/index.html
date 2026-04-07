@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>APE </title>
+<title>Random Ape Movement</title>
 <style>
   body {
     margin: 0;
@@ -15,13 +15,10 @@
     justify-content: start;
     height: 100vh;
   }
-
   h1 {
     margin: 20px;
   }
-
-
-  .box {
+  #box {
     width: 90%;
     max-width: 800px;
     height: 500px;
@@ -30,76 +27,36 @@
     position: relative;
     overflow: hidden;
   }
-
-
   #ape {
     position: absolute;
-    bottom: 20px;
-    width: 150px;
+    width: 100px;
     height: auto;
-    cursor: pointer;
-    transition: all 0.5s ease;
   }
-
-
-  #buttons {
+  #button {
     margin: 20px;
-  }
-
-  button {
     padding: 12px 20px;
-    margin: 0 10px;
     font-size: 1em;
-    cursor: pointer;
   }
 </style>
 </head>
 <body>
-
-<h1>APE WORLD</h1>
-
-<div id="buttons">
-  <button id="moveBtn">Move Ape</button>
-  <button id="jumpBtn">Make Ape Jump</button>
+<h1>Move the Ape Randomly</h1>
+<button id="button">Move Ape</button>
+<div id="box">
+  <img src="ape.png" id="ape" />
 </div>
-
-<div class="box" id="box">
-  <img src="ape.png" id="ape" alt="Ape" />
-</div>
-
 <script>
   const ape = document.getElementById('ape');
   const box = document.getElementById('box');
-  const moveBtn = document.getElementById('moveBtn');
-  const jumpBtn = document.getElementById('jumpBtn');
-
-  let positionX = 50; // 
-  let isJumping = false;
-
-  moveBtn.onclick = () => {
-   
-    if (positionX === 50) {
-      positionX = 80;
-    } else {
-      positionX = 10;
-    }
-    ape.style.left = positionX + '%';
-    ape.style.transform = 'translateX(-50%)';
-  };
-
-  jumpBtn.onclick = () => {
-    if (isJumping) return;
-    isJumping = true;
-    ape.style.transition = 'transform 0.5s, box-shadow 0.3s';
-    ape.style.transform = 'translateY(-150px) translateX(-50%)';
-    ape.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
-    setTimeout(() => {
-      ape.style.transform = 'translateY(0) translateX(-50%)';
-      ape.style.boxShadow = 'none';
-      isJumping = false;
-    }, 500);
+  document.getElementById('button').onclick = () => {
+    const maxX = box.clientWidth - ape.offsetWidth;
+    const maxY = box.clientHeight - ape.offsetHeight;
+    const randX = Math.random() * maxX;
+    const randY = Math.random() * maxY;
+    ape.style.transition = 'all 1s ease';
+    ape.style.left = randX + 'px';
+    ape.style.top = randY + 'px';
   };
 </script>
-
 </body>
 </html>
