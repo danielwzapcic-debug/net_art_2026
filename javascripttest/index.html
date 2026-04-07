@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>APE Website</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffe4b5;
+    transition: background-color 0.5s;
+  }
+
+  h1 {
+    margin-top: 20px;
+  }
+
+  button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .image-container {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #000;
+  }
+
+  #apeImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    transition: all 0.5s ease;
+  }
+</style>
+</head>
+<body>
+<h1>Meet the APE!</h1>
+<button id="moveApeBtn">Make the APE Move</button>
+<div class="image-container">
+  <img id="apeImage" src="https://i.imgur.com/4AiXzf8.png" alt="Ape" />
+</div>
+
+<script>
+  const button = document.getElementById('moveApeBtn');
+  const body = document.body;
+  const apeImage = document.getElementById('apeImage');
+
+  let movedRight = false;
+
+  button.addEventListener('click', () => {
+   
+    if (body.style.backgroundColor === 'lightcoral') {
+      body.style.backgroundColor = '#ffe4b5';
+    } else {
+      body.style.backgroundColor = 'lightcoral';
+    }
+
+    if (movedRight) {
+      apeImage.style.left = '50%';
+      apeImage.style.top = '50%';
+      apeImage.style.transform = 'translate(-50%, -50%)';
+      movedRight = false;
+    } else {
+      apeImage.style.left = '80%';
+      apeImage.style.top = '50%';
+      apeImage.style.transform = 'translate(-50%, -50%)';
+      movedRight = true;
+    }
+  });
+</script>
+</body>
+</html>
