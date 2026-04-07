@@ -1,11 +1,23 @@
-const ape = document.getElementById("ape");
-const message = document.getElementById("message");
-const button = document.getElementById("move-ape-btn");
+const button = document.getElementById('changeButton');
+const body = document.body;
+const image = document.getElementById('myImage');
 
-button.addEventListener("click", function() {
-    const x = Math.floor(Math.random() * 300);
-    const y = Math.floor(Math.random() * 200);
-    ape.style.left = x + "px";
-    ape.style.top = y + "px";
-    message.textContent = `Ape moved to (${x}px, ${y}px)!`;
+let movedRight = false;
+
+button.addEventListener('click', () => {
+    // Change background color
+    if (body.style.backgroundColor === 'lightblue') {
+        body.style.backgroundColor = '#f0f0f0';
+    } else {
+        body.style.backgroundColor = 'lightblue';
+    }
+    
+    // Shift image position
+    if (movedRight) {
+        image.style.left = '0px';
+        movedRight = false;
+    } else {
+        image.style.left = '200px';
+        movedRight = true;
+    }
 });
