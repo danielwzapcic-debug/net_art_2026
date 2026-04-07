@@ -2,8 +2,6 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
-    background-color: rgb(240, 248, 255);
-    transition: background-color 0.5s;
 }
 
 #ape-container {
@@ -15,10 +13,8 @@ body {
 #ape {
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 0;
     width: 100px;
-    height: auto;
-    transition: left 0.5s, top 0.5s, transform 0.5s;
 }
 
 button {
