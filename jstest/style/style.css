@@ -1,39 +1,24 @@
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffe4b5;
-  transition: background-color 0.5s;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
 }
 
-h1 {
-  margin-top: 20px;
+#ape-container {
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#ape {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
 }
 
 button {
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.image-container {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #000;
-}
-
-#apeImage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  transition: all 0.5s ease;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
