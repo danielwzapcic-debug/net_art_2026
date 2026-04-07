@@ -3,83 +3,179 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>APE Website</title>
+<title>Ape WORLD</title>
 <style>
   body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f7d358, #f27b4a);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffe4b5;
-    transition: background-color 0.5s;
+    min-height: 100vh;
+    overflow: hidden;
   }
 
   h1 {
-    margin-top: 20px;
+    padding: 20px;
+    font-size: 2em;
+    margin: 0;
+  }
+
+
+  .scene {
+    position: relative;
+    width: 95%;
+    max-width: 1000px;
+    height: 700px;
+    background: #87ceeb;
+    border-radius: 20px;
+    border: 4px solid #555;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Ground */
+  .ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(90deg, #6b4f3b, #8b5e3c);
+    border-top: 4px solid #554437;
+  }
+
+  
+  #ape {
+    position: absolute;
+    bottom: 80px;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #ape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Buttons */
+  .buttons {
+    margin: 20px;
   }
 
   button {
-    margin: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #4b1248;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 0 10px;
   }
 
-  .image-container {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #000;
+  button:hover {
+    background: #ffe8a1;
+    transform: scale(1.05);
   }
 
-  #apeImage {
+  /* Floating clouds for atmosphere */
+  .cloud {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    transition: all 0.5s ease;
+    top: 50px;
+    width: 150px;
+    height: 70px;
+    background: #fff;
+    border-radius: 75px / 35px;
+    opacity: 0.8;
+    animation: floatCloud 25s linear infinite;
   }
+
+  @keyframes floatCloud {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); }
+  }
+
+  /* Different clouds with delays for variation */
+  .cloud:nth-child(1) { left: -150px; animation-delay: 0s; }
+  .cloud:nth-child(2) { top: 100px; left: -200px; animation-delay: 5s; }
+  .cloud:nth-child(3) { top: 70px; left: -250px; animation-delay: 10s; }
 </style>
 </head>
 <body>
-<h1>Meet the APE!</h1>
-<button id="moveApeBtn">Make the APE Move</button>
-<div class="image-container">
-  <img id="apeImage" src="https://i.imgur.com/4AiXzf8.png" alt="Ape" />
+
+<h1>🐒 Welcome to the Ape Scene! 🐒</h1>
+
+<div class="buttons">
+  <button id="moveBtn">Move the Ape</button>
+  <button id="jumpBtn">Make the Ape Jump</button>
+</div>
+
+<div class="scene" id="scene">
+  <!-- Clouds floating in the sky -->
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <!-- Ground -->
+  <div class="ground"></div>
+  <!-- The Ape -->
+  <div id="ape">
+    <img src="ape.png" alt="Ape" />
+  </div>
 </div>
 
 <script>
-  const button = document.getElementById('moveApeBtn');
-  const body = document.body;
-  const apeImage = document.getElementById('apeImage');
+  const moveBtn = document.getElementById('moveBtn');
+  const jumpBtn = document.getElementById('jumpBtn');
+  const ape = document.getElementById('ape');
 
-  let movedRight = false;
+  let isMovingRight = false;
+  let isJumping = false;
 
-  button.addEventListener('click', () => {
+
+  moveBtn.onclick = () => {
+    if (isMovingRight) {
+    
+      ape.style.transition = 'left 1s ease, transform 1s ease';
+      ape.style.left = '20%';
+      ape.style.transform = 'translateX(-50%)';
+    } else {
    
-    if (body.style.backgroundColor === 'lightcoral') {
-      body.style.backgroundColor = '#ffe4b5';
-    } else {
-      body.style.backgroundColor = 'lightcoral';
+      ape.style.transition = 'left 1s ease, transform 1s ease';
+      ape.style.left = '80%';
+      ape.style.transform = 'translateX(-50%)';
     }
+    isMovingRight = !isMovingRight;
+  };
 
-    if (movedRight) {
-      apeImage.style.left = '50%';
-      apeImage.style.top = '50%';
-      apeImage.style.transform = 'translate(-50%, -50%)';
-      movedRight = false;
-    } else {
-      apeImage.style.left = '80%';
-      apeImage.style.top = '50%';
-      apeImage.style.transform = 'translate(-50%, -50%)';
-      movedRight = true;
-    }
-  });
+
+  jumpBtn.onclick = () => {
+    if (isJumping) return;
+    isJumping = true;
+    ape.style.transition = 'transform 0.6s, box-shadow 0.3s';
+    ape.style.transform = 'translateY(-150px) translateX(-50%)';
+    ape.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
+    setTimeout(() => {
+      ape.style.transform = 'translateY(0) translateX(-50%)';
+      ape.style.boxShadow = 'none';
+      isJumping = false;
+    }, 600);
+  };
 </script>
+
 </body>
 </html>
