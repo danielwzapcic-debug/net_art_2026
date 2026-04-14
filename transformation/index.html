@@ -3,32 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Click to Transform</title>
+  <title>choose your destiny</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-
-  <div id="bg-layer"></div>
-  <canvas id="shape-canvas"></canvas>
-
-  <div id="rest-screen">
-    <div id="rest-content">
-      <p id="rest-label">touch to transform</p>
-      <div id="rest-dot"></div>
-    </div>
+  <div id="wrap">
+    <h1>choose your destiny</h1>
+    <canvas id="c" width="280" height="280"></canvas>
+    <button onclick="draw()">generate</button>
   </div>
-
-  <div id="active-screen">
-    <div id="art-info">
-      <p id="art-title"></p>
-      <p id="art-artist"></p>
-    </div>
-    <div id="shape-info">
-      <p id="shape-label"></p>
-    </div>
-    <button id="reset-btn">↩ reset</button>
-  </div>
-
   <script src="js/script.js"></script>
 </body>
 </html>
