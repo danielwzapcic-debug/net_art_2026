@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Good News</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; min-height: 100%; background: #0c0c0c; }
+
+  body {
+    font-family: 'Courier Prime', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 80px 24px 60px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .back {
+    position: fixed; top: 28px; left: 28px;
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 20;
+    transition: color 0.2s;
+  }
+  .back:hover { color: rgba(255,255,255,0.6); }
+
+  .header {
+    text-align: center;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: up 0.8s ease forwards 0.2s;
+  }
+
+  .header h1 {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(26px, 4.5vw, 40px);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  .card {
+    max-width: 560px;
+    width: 100%;
+    opacity: 0;
+    animation: up 0.8s ease forwards 0.4s;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .category {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 18px;
+  }
+
+  .story-title {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(20px, 3.5vw, 30px);
+    color: rgba(255,255,255,0.88);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  .story-body {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.85;
+    margin-bottom: 22px;
+    font-weight: 400;
+  }
+
+  .story-source {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.18);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .story-source a {
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: color 0.2s;
+  }
+  .story-source a:hover { color: rgba(255,255,255,0.6); }
+
+  .next-btn {
+    display: inline-block;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.28);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: color 0.2s;
+  }
+  .next-btn:hover { color: rgba(255,255,255,0.7); }
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+  <a class="back" href="index.html">back</a>
+  <div class="header">
+    <h1>Good News</h1>
+    <p>something worth knowing</p>
+  </div>
+  <div class="card" id="card">
+    <div class="category" id="cat"></div>
+    <h2 class="story-title" id="title"></h2>
+    <p class="story-body" id="body"></p>
+    <p class="story-source" id="source"></p>
+    <button class="next-btn" onclick="nextStory()">another one</button>
+  </div>
+<script>
+const stories=[
+  {cat:"Environment",title:"The Ozone Layer Is Healing on Schedule",body:"Scientists confirmed that the ozone layer is recovering and on track to fully heal by 2066 — a direct result of the 1987 Montreal Protocol banning harmful chemicals. It stands as one of the greatest global environmental success stories, showing coordinated international action genuinely works.",source:"UN Environment Programme, 2023",url:"https://www.unep.org"},
+  {cat:"Wildlife",title:"Humpback Whales Removed from the Endangered Species List",body:"After decades of near-extinction, humpback whale populations have rebounded so dramatically that 14 of their 16 distinct populations are no longer considered endangered. A global ban on commercial whaling and sustained conservation efforts brought them back from the brink.",source:"NOAA Fisheries",url:"https://www.fisheries.noaa.gov"},
+  {cat:"Medicine",title:"The World's First Malaria Vaccine Has Been Approved",body:"The WHO approved R21/Matrix-M, the world's first malaria vaccine, for broad use in children. Malaria kills over 600,000 people annually, mostly young children in Africa. The vaccine shows up to 77% efficacy and could prevent millions of deaths each year.",source:"World Health Organization, 2023",url:"https://www.who.int"},
+  {cat:"Science",title:"Humans Have Planted Over 66 Billion Trees in a Decade",body:"Global reforestation efforts have accelerated dramatically. The Trillion Tree Campaign combined with national commitments from dozens of countries has resulted in tens of billions of trees planted worldwide — restoring ecosystems and rebuilding habitats.",source:"Plant for the Planet Foundation",url:"https://www.plant-for-the-planet.org"},
+  {cat:"Poverty",title:"Global Extreme Poverty Has Fallen by Over 60% Since 1990",body:"The share of the world living in extreme poverty has fallen from 36% in 1990 to under 9% today — one of the most significant improvements in human welfare in history. Access to food, clean water, education, and healthcare have all improved dramatically.",source:"World Bank, 2023",url:"https://www.worldbank.org"},
+  {cat:"Ocean",title:"The UN Signed a Historic Treaty to Protect International Oceans",body:"After 20 years of negotiations, the UN High Seas Treaty was signed by over 60 nations, creating a framework to protect 30% of the world's oceans by 2030 — the biggest ocean conservation agreement in history.",source:"United Nations, 2023",url:"https://www.un.org"},
+  {cat:"Energy",title:"Solar Energy Is Now the Cheapest Electricity in History",body:"The cost of solar power has dropped over 90% in the past decade, making it the cheapest source of electricity ever recorded across much of the world. In 2023, more renewable energy was added globally than at any point in history.",source:"International Energy Agency, 2023",url:"https://www.iea.org"},
+  {cat:"Wildlife",title:"Bald Eagles Have Fully Recovered Across the United States",body:"Once on the brink of extinction, the bald eagle population has grown from fewer than 500 nesting pairs in the 1960s to over 300,000 birds today — one of the greatest conservation achievements in American history.",source:"U.S. Fish & Wildlife Service",url:"https://www.fws.gov"},
+  {cat:"Health",title:"Childhood Cancer Survival Rates Have Tripled Since the 1970s",body:"Advances in treatment and early detection have pushed childhood cancer survival rates from around 28% in the 1970s to over 85% today. Researchers are now exploring therapies that could push that number even higher.",source:"American Cancer Society, 2023",url:"https://www.cancer.org"},
+  {cat:"Education",title:"Global Literacy Has Risen from 12% to Over 86% in 200 Years",body:"In 1820, only about 1 in 10 people could read. Today, more than 86% of the global adult population is literate — the fastest improvement in a fundamental human capability in recorded history.",source:"Our World in Data / UNESCO",url:"https://ourworldindata.org"},
+  {cat:"Animals",title:"Giant Pandas Are No Longer Endangered",body:"Thanks to decades of intensive conservation programs and habitat protection, the giant panda was downgraded from 'endangered' to 'vulnerable.' Wild panda populations have grown by over 17% in the past decade.",source:"WWF / IUCN, 2022",url:"https://www.worldwildlife.org"},
+  {cat:"Community",title:"Iceland Ran a 4-Day Workweek Trial — It Worked",body:"From 2015 to 2019, Iceland ran the world's largest trial of a four-day workweek with no pay cuts. Productivity either held steady or improved in almost every workplace tested, and worker wellbeing improved significantly across the board.",source:"Autonomy Research / Alda, 2021",url:"https://autonomy.work"},
+  {cat:"Space",title:"The James Webb Telescope Is Showing Us the Early Universe",body:"Since launching in 2021, Webb has captured images of galaxies forming just 300 million years after the Big Bang — images never seen by humanity. Every new release expands what we know about the universe and our place within it.",source:"NASA / ESA, 2023",url:"https://www.jwst.nasa.gov"},
+  {cat:"Kindness",title:"A Library of Things Movement Is Growing Worldwide",body:"Hundreds of communities have started free lending programs where neighbors borrow tools, camping gear, instruments, and sewing machines. The movement reduces waste while building tighter, more generous communities.",source:"Library of Things UK, 2023",url:"https://www.libraryofthings.co.uk"},
+  {cat:"Science",title:"AlphaFold Solved One of Biology's Greatest Mysteries",body:"DeepMind's AlphaFold AI predicted the 3D structure of nearly every known protein — over 200 million of them. Scientists called it one of the biggest breakthroughs in biology in decades, opening new doors for medicine and drug discovery worldwide.",source:"DeepMind / Nature, 2022",url:"https://www.nature.com"},
+  {cat:"Environment",title:"Clean Cookstoves Are Reaching Millions in Developing Nations",body:"Over 100 million clean cookstove units have been distributed globally, cutting indoor air pollution and reducing carbon emissions from traditional wood fires. The initiative has directly improved health outcomes for children and women across Africa and Asia.",source:"Global Alliance for Clean Cookstoves",url:"https://www.cleancookingalliance.org"},
+];
+let idx=0;
+const order=[...Array(stories.length).keys()].sort(()=>Math.random()-0.5);
+function show(i){
+  const s=stories[order[i]];
+  const c=document.getElementById('card');
+  c.style.opacity='0';c.style.transform='translateY(8px)';
+  setTimeout(()=>{
+    document.getElementById('cat').textContent=s.cat;
+    document.getElementById('title').textContent=s.title;
+    document.getElementById('body').textContent=s.body;
+    document.getElementById('source').innerHTML='Source: <a href="'+s.url+'" target="_blank" rel="noopener">'+s.source+'</a>';
+    c.style.transition='opacity 0.45s ease,transform 0.45s ease';
+    c.style.opacity='1';c.style.transform='translateY(0)';
+  },220);
+}
+function nextStory(){idx=(idx+1)%stories.length;show(idx)}
+show(idx);
+</script>
+</body>
+</html>
