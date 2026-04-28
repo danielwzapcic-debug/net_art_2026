@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calm</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+
+  body {
+    font-family: 'Courier Prime', monospace;
+    transition: background 2.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .scene { position: absolute; inset: 0; transition: opacity 2s ease; z-index: 0; }
+  .scene.dawn   { background: linear-gradient(175deg, #b87a20 0%, #d4824a 18%, #8a5070 40%, #2a3a6e 70%, #0a1535 100%); }
+  .scene.midday { background: linear-gradient(180deg, #c8dce8 0%, #7aabe0 30%, #2a5ab0 65%, #0a1e5a 100%); }
+  .scene.forest { background: linear-gradient(180deg, #8aae78 0%, #3a7840 28%, #1a4820 55%, #0a1e0a 100%); }
+  .scene.ocean  { background: linear-gradient(180deg, #c8dce8 0%, #4a9ac8 22%, #0a6090 50%, #031828 100%); }
+  .scene.dusk   { background: linear-gradient(170deg, #c0507a 0%, #8050a0 30%, #4050a0 58%, #0a0a2a 100%); }
+  .scene.night  { background: linear-gradient(180deg, #020610 0%, #080e30 45%, #0a0a28 100%); }
+
+  .stars { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease; pointer-events: none; z-index: 1; }
+  .star  { position: absolute; width: 1px; height: 1px; background: #fff; border-radius: 50%; animation: tw var(--d,3s) ease-in-out infinite; animation-delay: var(--dd,0s); }
+  @keyframes tw { 0%,100%{opacity:.15} 50%{opacity:.9} }
+
+  .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.15); z-index: 2; }
+
+  .content {
+    position: relative; z-index: 10;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px; text-align: center; padding: 24px;
+  }
+
+  .scene-name {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(32px, 7vw, 58px);
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fade 1.4s ease forwards 0.2s;
+    margin-bottom: 4px;
+  }
+
+  .scene-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fade 1s ease forwards 0.5s;
+    margin-bottom: 40px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    opacity: 0;
+    animation: fade 0.8s ease forwards 0.8s;
+  }
+
+  .ctrl-btn {
+    padding: 10px 18px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.3);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .ctrl-btn:last-child { border-right: none; }
+  .ctrl-btn:hover, .ctrl-btn.active { color: rgba(255,255,255,0.9); }
+
+  .sound-btn {
+    position: fixed; bottom: 28px; right: 28px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.3);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    z-index: 20;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .sound-btn:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.4); }
+
+  .back {
+    position: fixed; top: 28px; left: 28px;
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 20;
+    transition: color 0.2s;
+  }
+  .back:hover { color: rgba(255,255,255,0.7); }
+
+  @keyframes fade { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+  <div class="scene dawn" id="scene"></div>
+  <div class="stars" id="stars"></div>
+  <div class="overlay"></div>
+  <a class="back" href="index.html">back</a>
+  <div class="content">
+    <h1 class="scene-name" id="scene-name">Golden Hour</h1>
+    <p class="scene-sub" id="scene-sub">dawn is breaking</p>
+    <div class="controls">
+      <button class="ctrl-btn active" onclick="setScene(0)">Dawn</button>
+      <button class="ctrl-btn" onclick="setScene(1)">Midday</button>
+      <button class="ctrl-btn" onclick="setScene(2)">Forest</button>
+      <button class="ctrl-btn" onclick="setScene(3)">Ocean</button>
+      <button class="ctrl-btn" onclick="setScene(4)">Dusk</button>
+      <button class="ctrl-btn" onclick="setScene(5)">Night</button>
+    </div>
+  </div>
+  <button class="sound-btn" id="soundBtn" onclick="toggleSound()">sound off</button>
+<script>
+const scenes=[
+  {cls:'dawn',  name:'Golden Hour', sub:'dawn is breaking',       stars:false},
+  {cls:'midday',name:'Clear Sky',   sub:'the world is wide open', stars:false},
+  {cls:'forest',name:'Deep Forest', sub:'breathe in the green',   stars:false},
+  {cls:'ocean', name:'Open Ocean',  sub:'let the waves carry you',stars:false},
+  {cls:'dusk',  name:'Quiet Dusk',  sub:'the day slows down',     stars:false},
+  {cls:'night', name:'Still Night', sub:'the world is at rest',   stars:true},
+];
+const sceneEl=document.getElementById('scene'),nameEl=document.getElementById('scene-name'),subEl=document.getElementById('scene-sub'),starsEl=document.getElementById('stars'),btns=document.querySelectorAll('.ctrl-btn');
+for(let i=0;i<100;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*75+'%';s.style.setProperty('--d',(2+Math.random()*5)+'s');s.style.setProperty('--dd',(Math.random()*5)+'s');starsEl.appendChild(s)}
+function setScene(i){const s=scenes[i];sceneEl.className='scene '+s.cls;nameEl.textContent=s.name;subEl.textContent=s.sub;starsEl.style.opacity=s.stars?'1':'0';btns.forEach((b,j)=>b.classList.toggle('active',j===i))}
+let audioCtx=null,soundOn=false,masterGain=null;
+function buildAmbient(){audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.gain.value=0;masterGain.connect(audioCtx.destination);[60,90,120,180,240].forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.value=0.06/(i+1);o.connect(g);g.connect(masterGain);o.start()});const l=audioCtx.createOscillator(),lg=audioCtx.createGain();l.frequency.value=0.1;lg.gain.value=0.04;l.connect(lg);lg.connect(masterGain.gain);l.start()}
+function toggleSound(){if(!audioCtx)buildAmbient();soundOn=!soundOn;masterGain.gain.setTargetAtTime(soundOn?0.5:0,audioCtx.currentTime,1.5);document.getElementById('soundBtn').textContent=soundOn?'sound on':'sound off'}
+</script>
+</body>
+</html>
